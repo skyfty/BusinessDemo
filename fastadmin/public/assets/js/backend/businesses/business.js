@@ -41,21 +41,26 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             var modal = $('<div class="modal fade" tabindex="-1" style="background-color: rgba(0, 0, 0, 0);" role="dialog"></div>');
             var modalDialog = $('<div class="modal-dialog" style="background-color: rgba(0, 0, 0, 0);" role="document"></div>');
             var modalContent = $('<div class="modal-content" style="background-color: rgba(0, 0, 0, 0);"></div>');
-
+            
             var modalBody = $('<div class="modal-body text-center" style="height: 400px; padding-top: 100px;"></div>');
-            // var canvas = $('<canvas id="canvas" style="z-index: 2003;"></canvas>'); // 创建用于绘制连线的canvas元素
+            // var canvas = $('<canvas id="canvas" style=" position: absolute;top: 0;left: 0;z-index: 1000;"></canvas>'); // 创建用于绘制连线的canvas元素
             // modalBody.append(canvas);
-
+// canvas = document.createElement("canvas");
+//                 canvas.id = "canvas";
+//                 canvas.style.zIndex = 2003;
+//                 modalBody.append(canvas);
             modalContent.append(modalBody);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
-
+             
             $('body').append(modal);
             modal.modal('hide');
+
             // 添加预览功能
             table.on('click', '.btn-preview', function () {
+               
                 var id = $(this).data('id');
-
+               
                 $.ajax({
                     url: 'http://192.168.33.217:8081/php/PHP/business/del.php',
                     type: 'GET',
@@ -68,7 +73,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
                             var currentElement = $('<div style=" background-color:blue;" class="border draggable" ></div>');
                             currentElement.append(
-                                '<div class="drag"  style="  border: 1px solid black; display: inline-block; ">' +
+                                '<div class="drag"  style="border: 1px solid black; display: inline-block; ">' +
                                 transitionPath[i] +
                                 '</div>'
                             );
@@ -80,7 +85,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         }
                         transitionPathHtml += '</div></div>';
                         modalBody.html(transitionPathHtml);
-
+                        
                         modalContent.append(modalBody);
                         modalDialog.append(modalContent);
                         modal.append(modalDialog);
@@ -100,6 +105,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     var $dragElement = null;
 
                     var canvas = document.getElementById("canvas");
+                    // modalBody.append(canvas);
                     var ctx = canvas.getContext("2d");
 
                     $('body').on('mousedown', '.drag', function (event) {
@@ -149,6 +155,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             // 获取数据
                             var name1 = container1.text().trim();
                             var name2 = container2.text().trim();
+                            console.log('1111');
+                            console.log(name1);
+                            console.log(name2);
+                            console.log(id);
                             var url = 'http://192.168.33.217:8081/php/PHP/business/juese.php?name1=' + encodeURIComponent(name1) + '&name2=' + encodeURIComponent(name2) + '&task_id=' + encodeURIComponent(id);
 
                             $.ajax({
@@ -172,9 +182,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
                             // 计算容器的中心点坐标
                             var centerX1 = container1.offset().left + container1.outerWidth() / 1.6;
-                            var centerY1 = container1.offset().top + container1.outerHeight() / 1.6;
+                            var centerY1 = container1.offset().top + container1.outerHeight() / 1.6-100;
                             var centerX2 = container2.offset().left + container2.outerWidth() / 1.6;
-                            var centerY2 = container2.offset().top + container2.outerHeight() / 1.6;
+                            var centerY2 = container2.offset().top + container2.outerHeight() / 1.6-100;
 
                             // 计算线的角度和长度
                             var angle = Math.atan2(centerY2 - centerY1, centerX2 - centerX1);
@@ -211,6 +221,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             ctx.restore();
                         }
                     }
+                });
+                modal.on('hidden.bs.modal', function () {
+                    // 关闭画布
+                    // var canvas = document.getElementById("canvas");
+                    // var ctx = canvas.getContext("2d");
+                    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // canvas.parentNode.removeChild(canvas);
+                    location.reload();
+                    
                 });
 
 

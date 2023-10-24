@@ -1,0 +1,141 @@
+<script src="./business.js"></script>
+
+<script>
+      // 添加预览功能
+      table.on('click', '.btn-preview', function () {
+                var id = 1;//$(this).data('id');
+
+                $.ajax({
+                    url: 'http://192.168.33.217:8081/php/PHP/business/del.php',
+                    type: 'GET',
+                    data: { task_id: id },
+                    success: function (response) {
+                        var modal = $(' <div class="modal fade" tabindex="-1" style=" z-index:1100; background-color: rgba(0, 0, 0, 0);" role="dialog"></div>');
+                        var modalDialog = $('<div class="modal-dialog modal-lg" style=" z-index:1100; background-color: rgba(0, 0, 0, 0);" role="document"></div>');
+                        var modalContent = $('<div class="modal-content" style=" z-index: 10; background-color: rgba(0, 0, 0, 0);"></div>');
+
+                        var transitionPath = response.transition_path;
+
+                        var modalBody = $('<div class="modal-body text-center" style="background-color: rgba(0, 0, 0, 0); z-index: 1100;height:400px; padding-top:100px;"></div>');
+
+                        var transitionPathHtml = '<div class="draggable" style="  " >;' // 使用 list-unstyled 类移除无序列表前面的点
+
+                        for (var i = 0; i < transitionPath.length; i++) {
+                            if (i > 0) {
+                                //transitionPathHtml += '<li class="arrow" style="border-bottom-color: #fd0000;color: green;font-size: 50px;padding-left:100px">&#8595;'; // 添加箭头样式
+                                var currentElements = $('<span class="border" style="border-bottom-color: #fd0000;color: green;font-size: 10px;"></span>');
+                               
+                                
+                            }
+
+                            var currentElement = $('<div style="background-color:blue;" class=" border draggable" ></div>');
+                            currentElement.append(
+                                '<div class="drag"  style=" background-color:blue;border: 1px solid black; display: inline-block; ">' +
+                                transitionPath[i] +
+                                '</div>'
+                            );
+                            //  window.onload = function(){
+                            $(document).ready(function () {
+                                var isDragging = false;
+                                var offsetX = 0;
+                                var offsetY = 0;
+                                var $dragElement = null;
+                                var canvas = document.getElementById("canvas");
+                                var ctx = canvas.getContext("2d");
+
+                                $('body').on('mousedown', '.drag', function (event) {
+                                    isDragging = true;
+                                    $dragElement = $(this);
+                                    offsetX = event.clientX - $dragElement.offset().left;
+                                    offsetY = event.clientY - $dragElement.offset().top;
+                                });
+
+                                $('body').on('mousemove', function (event) {
+                                    if (isDragging && $dragElement) {
+                                        var left = event.clientX - offsetX;
+                                        var top = event.clientY - offsetY;
+
+                                        $dragElement.css({
+                                            left: left + 'px',
+                                            top: top + 'px'
+                                        });
+
+                                        drawLines();
+                                    }
+                                });
+
+                                $('body').on('mouseup', function () {
+                                    isDragging = false;
+                                    $dragElement = null;
+                                });
+
+                             // 绘制连线
+        function drawLines() {
+        var containers = $('.drag');
+    var canvasWidth = $(document).width();
+    var canvasHeight = $(document).height();
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    for (var i = 0; i < containers.length - 1; i++) {
+        var container1 = $(containers[i]);
+        var container2 = $(containers[i + 1]);
+        var x1 = container1.offset().left + container1.outerWidth() / 2;
+        var y1 = container1.offset().top + container1.outerHeight() / 2;
+        var x2 = container2.offset().left + container2.outerWidth() / 2;
+        var y2 = container2.offset().top + container2.outerHeight() / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        // 获取数据
+        var name1 = container1.text().trim();
+        var name2 = container2.text().trim();
+        var url = 'http://192.168.33.217:8081/php/PHP/business/juese.php?name1=' + encodeURIComponent(name1) + '&name2=' + encodeURIComponent(name2) + '&task_id=' + encodeURIComponent(id);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            async: false,
+            success: function (data) {
+                // 在连线旁边展示数据
+                var text =  data.name;
+                var offsetX = (x1 + x2) / 2;
+                var offsetY = (y1 + y2) / 2;
+                ctx.fillStyle = "green";
+                ctx.font = "bold 13px Arial"; // 调整字体大小
+                ctx.fillText(text, offsetX, offsetY);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+}
+                            });
+
+
+
+
+                            transitionPathHtml += currentElement.prop('outerHTML');
+                        }
+                        transitionPathHtml += '</div></div><canvas id="canvas"></canvas>';
+                        modalBody.html(transitionPathHtml);
+
+                        modalContent.append(modalBody);
+                        modalDialog.append(modalContent);
+                        modal.append(modalDialog);
+
+                        modal.modal('show');
+                    },
+
+                    error: function (xhr, status, error) {
+
+                        console.log(error);
+                    }
+                });
+            });
+</script>

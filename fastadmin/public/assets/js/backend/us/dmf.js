@@ -5,13 +5,13 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: '业务后台/业务表/index' + location.search,
-                    add_url: '业务后台/业务表/add',
-                    edit_url: '业务后台/业务表/edit',
-                    del_url: '业务后台/业务表/del',
-                    multi_url: '业务后台/业务表/multi',
-                    import_url: '业务后台/业务表/import',
-                    table: 'task',
+                    index_url: 'us/dmf/index' + location.search,
+                    add_url: 'us/dmf/add',
+                    edit_url: 'us/dmf/edit',
+                    del_url: 'us/dmf/del',
+                    multi_url: 'us/dmf/multi',
+                    import_url: 'us/dmf/import',
+                    table: 'dong',
                 }
             });
 
@@ -26,8 +26,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'title', title: __('Title'), operate: 'LIKE', table: table, class: 'autocontent', formatter: Table.api.formatter.content},
-                        {field: 'content', title: __('Content'), operate: 'LIKE', table: table, class: 'autocontent', formatter: Table.api.formatter.content},
+                        {field: 'name', title: __('Name'), operate: 'LIKE', table: table, class: 'autocontent', formatter: Table.api.formatter.content},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

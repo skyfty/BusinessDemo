@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:business/view/home_page.dart';
 import 'package:business/login.dart';
 class Task {
   String title;
   String contend;
-  Task(this.title, this.contend);
+  String taskobjectid;
+  String tasks;
+  Task(this.title, this.contend,this.tasks,this.taskobjectid);
 }
-
+String phone = getGlobalPhone();
 class Emergent extends StatefulWidget {
   @override
   _EmergentState createState() => _EmergentState();
@@ -19,7 +23,7 @@ class _EmergentState extends State<Emergent> {
   @override
   void initState() {
     super.initState();
-    _loadTasksFromDatabase(_id);
+    _loadTasksFromDatabase();
   }
 
   @override
@@ -71,7 +75,15 @@ class _EmergentState extends State<Emergent> {
 
                       return ListTile(
                         onTap: () {
-                          print(task.title);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TaskDetailsPage(
+                                title: task.title ?? '',
+                                content: task.contend ?? '',
+                              ),
+                            ),
+                          );
                         },
                         title: Text(
                           task.title ?? '',
@@ -159,7 +171,7 @@ class _EmergentState extends State<Emergent> {
                 if (newTasktitle.isNotEmpty && newTaskcontend.isNotEmpty) {
                   await _addTaskToDatabase(newTasktitle, newTaskcontend);
                   setState(() {
-                    urgentItems.add(Task(newTasktitle, newTaskcontend));
+                    urgentItems.add(Task(newTasktitle, newTaskcontend,newTasktitle, newTaskcontend));
                   });
                   Navigator.of(context).pop();
                 }
@@ -171,61 +183,32 @@ class _EmergentState extends State<Emergent> {
       },
     );
   }
-  // int _id = getGlobalId();
-  // Future<void> _loadTasksFromDatabase() async {
-  //   final url = Uri.parse('http://192.168.33.217:8081/php/PHP/business/show.php'); // 替换为你的后端API URL
-  //   try {
-  //     final response = await http.get(url);
-  //
-  //     if (response.statusCode == 200) {
-  //       final data = jsonDecode(response.body);
-  //       final tasksData = data['data'];
-  //
-  //       if (tasksData is List) {
-  //         setState(() {
-  //           urgentItems = tasksData.map((taskData) {
-  //             if (taskData is Map<String, dynamic>) {
-  //               return Task(taskData['title'], taskData['content']);
-  //             } else {
-  //               return null;
-  //             }
-  //           }).whereType<Task>().toList();
-  //         });
-  //       }
-  //
-  //       print('Tasks loaded successfully');
-  //     } else {
-  //       print('Failed to load tasks');
-  //     }
-  //   } catch (error) {
-  //     print('Error loading tasks: $error');
-  //   }
-  // }
-  int _id = getGlobalId();
 
-  Future<void> _loadTasksFromDatabase(int id) async {
-    final url = Uri.parse('http://192.168.33.217:8081/php/PHP/business/showl.php?id=${int.parse(_id.toString())}');
+  // int _id = getGlobalId();
+
+  Future<void> _loadTasksFromDatabase() async {
+    final url = Uri.parse('http://192.168.33.217:8081/php/PHP/business/statuschange.php?phone=$phone');
     try {
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
-        final da =jsonDecode(response.body);
-        print(da);
-        // final data = jsonDecode(da);
-        // print(data);
-        final tasksData = da;
-        if (tasksData is List) {
+        final rawResponse = response.body;
+        // final jsonResult = json.decode(response.body);
+        final decodedResponse = utf8.decode(rawResponse.runes.toList());
+        final responseData = jsonDecode(decodedResponse);
+        print(responseData);
+        if (responseData is List) {
+          final tasksData = responseData;
           setState(() {
             urgentItems = tasksData.map((taskData) {
               if (taskData is Map<String, dynamic>) {
-                return Task(taskData['title'], taskData['content']);
+                return Task(taskData['taskobject'], taskData['taskstatus'],taskData['task'],taskData['id']);
               } else {
                 return null;
               }
             }).whereType<Task>().toList();
           });
         }
-
         print('Tasks loaded successfully');
       } else {
         print('Failed to load tasks');
@@ -292,6 +275,133 @@ class _DropdownSelectState extends State<DropdownSelect> {
           child: Text(value),
         );
       }).toList(),
+    );
+  }
+}
+//二级页面
+class TaskDetailsPage extends StatefulWidget {
+  final String title;
+  final String content;
+
+  TaskDetailsPage({required this.title, required this.content});
+
+  @override
+  _TaskDetailsPageState createState() => _TaskDetailsPageState();
+}
+
+class _TaskDetailsPageState extends State<TaskDetailsPage> {
+  bool showButtons = false;
+  String? add;
+  @override
+  void initState() {
+    super.initState();
+    _checkTaskObject();
+  }
+
+  void _checkTaskObject() async {
+    final url = Uri.parse(
+        'http://192.168.33.217:8081/php/PHP/business/taskobject/pretreatment.php?phone=15110055954&taskobject=${widget.title}');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonResult = json.decode(response.body);
+      final result = jsonResult['result'];
+      print(result);
+
+      setState(() {
+        add = jsonResult['name']; // 将add赋值为jsonResult['name']
+        if (result == '相同') {
+          showButtons = true;
+        } else {
+          showButtons = false;
+        }
+      });
+    } else {
+      print('请求失败: ${response.statusCode}');
+    }
+  }
+
+  void _submitTask(BuildContext context) async {
+    final url = Uri.parse(
+        'http://192.168.33.217:8081/php/PHP/business/process.php?phone=15110055954&taskobject=${widget.title}');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      print('提交成功');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Home_pages()),
+      );
+    } else {
+      print('提交失败');
+    }
+  }
+
+  void _rejectTask(BuildContext context) async {
+    final url = Uri.parse(
+        'http://192.168.33.217:8081/php/PHP/business/taskobject/reject.php?phone=15110055954&taskobject=${widget.title}');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      print('驳回成功');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Home_pages()),
+      );
+    } else {
+      print('驳回失败');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '业务: ${widget.title}',
+              style: TextStyle(fontSize: 24),
+            ),
+            SizedBox(height: 10),
+            Text(
+              '当前状态: ${widget.content}',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(height: 10),
+            if (add != null) // 检查add是否有值
+              Text(
+                '当前处理人: $add',
+                style: TextStyle(fontSize: 16),
+              ),
+            SizedBox(height: 20),
+            if (showButtons)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      _submitTask(context);
+                    },
+                    child: Text('提交'),
+                  ),
+                  SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _rejectTask(context);
+                    },
+                    child: Text('驳回'),
+                  ),
+                ],
+              ),
+
+          ],
+        ),
+      ),
     );
   }
 }

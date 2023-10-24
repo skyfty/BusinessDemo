@@ -26,10 +26,98 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'task_id', title: __('Task_id')},
-                        {field: 'original_id', title: __('Original_id')},
-                        {field: 'end_id', title: __('End_id')},
-                        {field: 'role_id', title: __('Role_id')},
+                        {field: 'task_id', title: __('业务类型'), formatter: function (value, row) {
+                            var apiUrl = 'http://192.168.33.217:8081/php/PHP/business/task.php?id=' + encodeURIComponent(row.task_id);
+                            $.ajax({
+                                url: apiUrl,
+                                dataType: 'json',
+                                async: false,
+                                success: function (response) {
+                                //   console.log(response); // 检查打印
+                                  value = response.title;
+                                //   console.log(value);
+                              
+                                },
+                                error: function () {
+                                  
+                                  
+                                  value = 'Error';
+                                }
+                              });
+                            return value;
+                        
+                        }
+                    
+                    },
+                        {field: 'current_id', title: __('状态'), formatter: function (value, row) {
+                            var apiUrl = 'http://192.168.33.217:8081/php/PHP/business/status.php?id=' + encodeURIComponent(row.current_id);
+                            $.ajax({
+                                url: apiUrl,
+                                dataType: 'json',
+                                async: false,
+                                success: function (response) {
+                                //   console.log(response); // 检查打印
+                                  value = response.name;
+                                //   console.log(value);
+                                 
+                               
+                                },
+                                error: function () {
+                                  
+                                  value = 'Error';
+                                }
+                              });
+                            return value;
+                        
+                        }
+                    
+                    },
+                        {field: 'next_id', title: __('下一状态'), formatter: function (value, row) {
+                            var apiUrl = 'http://192.168.33.217:8081/php/PHP/business/status.php?id=' + encodeURIComponent(row.next_id);
+                            $.ajax({
+                                url: apiUrl,
+                                dataType: 'json',
+                                async: false,
+                                success: function (response) {
+                                  console.log(response); // 检查打印
+                                  value = response.name;
+                                  console.log(value);
+                                 
+                                },
+                                error: function () {
+                                  
+                                    console.log(666);
+                                  value = 'Error';
+                                }
+                              });
+                            return value;
+                        
+                        }
+                    
+                    },
+                        {field: 'ProcessRole', title: __('处理角色'), formatter: function (value, row) {
+                            var apiUrl = 'http://192.168.33.217:8081/php/PHP/business/role.php?id=' + encodeURIComponent(row.ProcessRole);
+                            $.ajax({
+                                url: apiUrl,
+                                dataType: 'json',
+                                async: false,
+                                success: function (response) {
+                                  console.log(response); // 检查打印
+                                  value = response.name;
+                                  console.log(value);
+                                 
+                                },
+                                error: function () {
+                                  
+                                    console.log(666);
+                                  value = 'Error';
+                                }
+                              });
+                            return value;
+                        
+                        }
+                    
+                    },
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
