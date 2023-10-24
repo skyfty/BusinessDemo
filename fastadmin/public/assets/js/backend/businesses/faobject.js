@@ -20,7 +20,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             var status = [];
             //给status数组赋值
             status[0] = '未开始';
-
+            var task= [];
+            task[0] = '未开始';
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
@@ -41,6 +42,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                                 success: function (response) {
                                    
                                     value = response[0].title; // 将title赋给value
+                                    task[row.id] = value;
                                 },
                                 error: function () {
                                     value = 'Error';
@@ -81,7 +83,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             formatter: function (value, row, index) {
                                 console.log(row.taskValue);
                                 console.log(row.taskobject);
-                                return '<button class="btn btn-primary btn-xs btn-preview" data-id="' + row.id + '" data-task="' + row.task + '" data-taskvalue="' + row.taskstatus + '">预览</button>';
+                                return '<button class="btn btn-primary btn-xs btn-preview" data-id="' + row.id + '" data-task="' + row.title + '" data-taskvalue="' + row.taskstatus + '">预览</button>';
                             }
                         },
                         {
@@ -180,13 +182,19 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     }
                 });
             });
+      
             // 点击预览按钮显示模态框
+
             table.on('click', '.btn-preview', function () {
 
                 var id = 0;
-                var task = $(this).data('task');
-                var url = 'http://192.168.33.217:8081/php/PHP/business/taskso.php?task=' + encodeURIComponent(task);
-
+                var task_id= $(this).data('id')
+                var tasks =task[task_id] ;
+                var url = 'http://192.168.33.217:8081/php/PHP/business/taskso.php?task=' + encodeURIComponent(tasks);
+           
+                console.log(111111);
+                console.log(tasks);
+                console.log(tasks);
                 // 发起AJAX请求
                 $.ajax({
                     url: url,
@@ -207,15 +215,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     }
                 });
 
-                var taskValue = $(this).data('taskvalue');
-                console.log('taskValue:', taskValue);
+                // var taskValue = $(this).data('taskvalue');
+                // console.log('taskValue:', taskValue);
 
 
 
                 $.ajax({
                     url: 'http://192.168.33.217:8081/php/PHP/business/taskobject.php',
                     type: 'GET',
-                    data: { value: task },
+                    data: { value: tasks },
                     success: function (response) {
                         var transitionPath = response.transition_path;
                         var transitionPathHtml = '<div class="draggable" style=" z-index: 1202;" >' // 使用 list-unstyled 类移除无序列表前面的点
@@ -225,6 +233,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             var currentElement = $('<div style=" background-color:yellow;" class="border draggable" ></div>');
                             var currentStatus = transitionPath[i];
                             if (currentStatus === status[id]) {
+                                console.log(122);
+                                console.log(status[id]);
                                 currentElement.append(
                                     '<div class="drag"  style="  border: 1px solid black; display: inline-block; ">' +
                                     transitionPath[i] +
