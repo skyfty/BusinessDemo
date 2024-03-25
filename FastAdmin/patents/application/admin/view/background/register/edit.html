@@ -1,0 +1,139 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+        </div>
+    </div>
+ 
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('当前状态')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" name="row[now_status]">
+                <option value="等待代理人确认" {$row.now_status=='等待代理人确认' ? 'selected' : '' }>等待代理人确认
+                </option>
+                <option value="代理人已确认" {$row.now_status=='代理人已确认' ? 'selected' : '' }>代理人已确认
+                </option>
+                
+            </select>
+            <!-- <input id="c-now_status" class="form-control" name="row[now_status]" type="text" value="{$row.now_status|htmlentities}"> -->
+        </div> 
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_name" class="form-control" name="row[register_name]" type="text" value="{$row.register_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">客户名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-client_name" class="form-control  selectpage" data-field="business_name" data-source="business/business/index" name="row[client_name]" type="text" value="{$row.client_name|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Case_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-case_type" class="form-control" name="row[case_type]" type="text" value="{$row.case_type|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Case_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-case_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[case_time]" type="text" value="{:$row.case_time?datetime($row.case_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('My_case_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-my_case_number" class="form-control" name="row[my_case_number]" type="text" value="{$row.my_case_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Other_case_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-other_case_number" class="form-control" name="row[other_case_number]" type="text" value="{$row.other_case_number|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group"> 
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fast')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-fast" class="form-control" name="row[fast]" type="text" value="{$row.fast|htmlentities}">
+        </div> 
+    </div> 
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Organization')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-organization" class="form-control  selectpage" data-field="branch_name" data-source="branch/branch/index" name="row[organization]" type="text" value="{$row.organization|htmlentities}">
+           
+            <!-- <input id="c-organization" class="form-control  selectpage" data-field="branch_name" data-source="branch/branch/index" name="row[organization]" type="text" value="{$row.organization|htmlentities}"> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('部门')}:</label>
+        <div class="col-xs-12 col-sm-8">
+           
+            <select class="form-control" id="c-department" name="row[department]">
+                <option value="{$row.department}" selected>{$row.departments}</option>
+ 
+            </select>
+            <!-- <input id="cagent" class="form-control selectpage" data-field="agent_name" data-source="branch/agent/index" name="row[agent]" type="text" value=""> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <!-- <input id="c-agent" class="form-control  selectpage" data-field="nickname" data-source="auth/admin/index" name="row[agent]" type="text" value="{$row.agent|htmlentities}"> -->
+             <select class="form-control" id="c-agent" name="row[agent]">
+               
+                <option value="{$row.agent}" selected>{$row.agents}</option>
+            </select>
+            <!-- <input id="c-agent" class="form-control selectpage"  data-field="agent_name" data-source="branch/agent/index" name="row[agent]" type="text" value="{$row.agent|htmlentities}"> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" id="c-agent_phone" name="row[agent_phone]">
+               
+                <option value="{$row.agent_phone}" selected>{$row.agent_phones}</option>
+            </select>
+            <!-- <input id="c-agent_phone" class="form-control" name="row[agent_phone]" type="text" value="{$row.agent_phone|htmlentities}"> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Technology')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-technology" class="form-control selectpage" data-field="technology_name" data-source="business/technology/index" name="row[technology]" type="text" value="{$row.technology|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Technology_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-technology_phone" class="form-control" name="row[technology_phone]" type="text" value="{$row.technology_phone|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Invent_open')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-invent_open" class="form-control" name="row[invent_open]" type="text" value="{$row.invent_open|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>
+<script>
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    var content = document.getElementById("c-agent").value;
+       
+        console.log(content);
+       
+      });
+</script>

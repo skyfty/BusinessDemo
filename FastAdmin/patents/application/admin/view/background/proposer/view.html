@@ -1,0 +1,561 @@
+<div class="col-md-3">
+    <div class="box box-success">
+        <div class="panel-heading">
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{$row.proposer_name}</h3>
+                <p class="text-muted text-center">{$row.user_number}</p>
+                <div class="tab-pane fade in">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:30%">名称</th>
+                                    <td>
+                                        {$row.proposer_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">代号ID</th>
+                                    <td>
+                                        {$row.user_number}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">英文简称</th>
+                                    <td>
+                                        {$row.english_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">联系电话</th>
+                                    <td>
+                                        {$row.applicant_telephone}
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #edit-form {
+        display: none;
+    }
+
+    .active a {
+        background-color: rgb(100, 99, 99) !important;
+    }
+    .phone-input.invalid {  
+        border-color: red !important;  
+    }  
+    .id-number-input.invalid {  
+        border-color: red !important;  
+    }  
+</style>
+<!-- 右侧详细信息 -->
+<div class="col-md-8 panel panel-default panel-intro ">
+    <!-- 无序列表导航 -->
+    <div class="box box-success">
+        <div class="panel-heading ">
+            <ul class="nav nav-tabs">
+                <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li>
+
+            </ul>
+        </div>
+        <!-- 详细信息 -->
+        <div id="form-container">
+            <form id="view-form">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">个人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">名称</th>
+                                            <td>
+                                                {$row.proposer_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">详细信息</th>
+                                            <td>
+                                                {$row.content}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">英文简称</th>
+                                            <td>
+                                                {$row.english_name}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:30%;text-align:right">用户代码</th>
+                                            <td>
+                                                {$row.user_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">申请人类型</th>
+                                            <td>
+                                                {$row.applicant_type}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">证件类型</th>
+                                            <td>
+                                                {$row.certificate_type}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">证件号码</th>
+                                            <td>
+                                                {$row.id_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">国籍或注册国家(地区)</th>
+                                            <td>
+                                                {$row.nationality_region}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">经常居所地或营业所在地</th>
+                                            <td>
+                                                {$row.place_residence}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">省、市、区</th>
+                                            <td>
+                                                {$row.provience}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">详细地址(具体门牌号)</th>
+                                            <td>
+                                                {$row.street}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">邮政编码</th>
+                                            <td>
+                                                {$row.postal_code}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">电子邮箱</th>
+                                            <td>
+                                                {$row.email}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">电话</th>
+                                            <td>
+                                                {$row.applicant_telephone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">费减请求</th>
+                                            <td>
+                                                {$row.fee_reduction_request}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">预审备案</th>
+                                            <td>
+                                                {$row.pre_examination_record}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">总委备案</th>
+                                            <td>
+                                                {$row.general_committee_record}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">总委备案号</th>
+                                            <td>
+                                                {$row.general_committee_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">附件</th>
+                                            <td>
+                                                {$row.attachment}
+                                                <ul class="row list-inline faupload-preview" id="p-attachment"></ul>
+                                            </td>
+                                        </tr>
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+
+            <form id="edit-form" role="form" action="{:url('background/proposer/saveProposerInfo', ['id' => $row.id])}"
+                method="post">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">编辑申请人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">名称</th>
+                                            <td>
+                                                <input class="form-control" name="proposer_name" type="text"
+                                                    value="{$row.proposer_name|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">详细信息</th>
+                                            <td>
+                                                <textarea class="form-control editor"
+                                                    name="content">{$row.content}</textarea>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">英文简称</th>
+                                            <td>
+                                                <input class="form-control" name="english_name" type="text"
+                                                    value="{$row.english_name|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">用户代码</th>
+                                            <td>
+                                                <input class="form-control" name="user_number" type="text"
+                                                    value="{$row.user_number|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">申请人类型</th>
+                                            <td>
+                                                <select class="form-control" name="applicant_type">
+                                                    <option value="大专院校" {$row.applicant_type=='大专院校' ? 'selected'
+                                                        : '' }>大专院校
+                                                    </option>
+                                                    <option value="科研单位" {$row.applicant_type=='科研单位' ? 'selected'
+                                                    : '' }>科研单位
+                                                </option>
+                                                <option value="工矿企业" {$row.applicant_type=='工矿企业' ? 'selected'
+                                                : '' }>工矿企业
+                                            </option>
+                                            <option value="事业单位" {$row.applicant_type=='事业单位' ? 'selected'
+                                            : '' }>事业单位
+                                        </option>
+                                        <option value="个人" {$row.applicant_type=='个人' ? 'selected'
+                                        : '' }>个人
+                                    </option>
+                                                   
+                                                </select>
+                                                <!-- <input class="form-control" name="applicant_type" type="text"
+                                                    value="{$row.applicant_type|htmlentities}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">证件类型</th>
+                                            <td>
+                                                <select class="form-control" name="certificate_type" id="certificateType">
+                                                    <option value="身份证" {$row.certificate_type=='身份证' ? 'selected'
+                                                        : '' }>身份证
+                                                    </option>
+                                                    <option value="护照" {$row.certificate_type=='护照' ? 'selected'
+                                                        : '' }>护照
+                                                    </option>
+
+
+                                                </select>                                              
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">证件号码</th>
+                                            <td>
+                                                <input id="idNumber" class="form-control id-number-input" name="id_number" type="text"
+                                                    value="{$row.id_number|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">国籍或注册国家(地区)
+                                            </th>
+                                            <td>
+                                                <select class="form-control" name="nationality_region">
+                                                    <option value="中国" {$row.nationality_region=='中国' ? 'selected'
+                                                        : '' }>中国
+                                                    </option>
+                                                    <option value="香港" {$row.nationality_region=='香港' ? 'selected'
+                                                        : '' }>香港
+                                                    </option>
+                                                    <option value="美国" {$row.nationality_region=='美国' ? 'selected'
+                                                        : '' }>美国
+                                                    </option>
+
+                                                </select>
+                                                <!-- <input class="form-control" name="nationality_region" type="text"
+                                                    value="{$row.nationality_region|htmlentities}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">经常居所地或营业所在地
+                                            </th>
+                                            <td>
+                                                <input class="form-control" name="place_residence" type="text"
+                                                    value="{$row.place_residence|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">省、市、区</th>
+                                            <td>
+                                                <div class="form-group">
+
+                                                    <div class="col-xs-12 col-sm-8">
+                                                        <input id="c-provience" data-toggle="city-picker"
+                                                            class="form-control" name="provience" type="text"
+                                                            value="{$row.provience|htmlentities}">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">详细地址(具体门牌号)
+                                            </th>
+                                            <td>
+                                                <input class="form-control" name="street" type="text"
+                                                    value="{$row.street|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">邮政编码</th>
+                                            <td>
+                                                <input class="form-control" name="postal_code" type="text"
+                                                    value="{$row.postal_code|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">电子邮箱</th>
+                                            <td>
+                                                <input class="form-control" name="email" type="text"
+                                                    value="{$row.email|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">电话</th>
+                                            <td>
+                                                <input class="form-control  phone-input" name="applicant_telephone" type="text"
+                                                    maxlength="11" value="{$row.applicant_telephone|htmlentities}">
+                                               
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">费减请求</th>
+                                            <td>
+                                                <select class="form-control" name="fee_reduction_request">
+                                                    <option value="请求费减且已完成费减资格备案"
+                                                        {$row.fee_reduction_request=='请求费减且已完成费减资格备案' ? 'selected' : ''
+                                                        }>请求费减且已完成费减资格备案
+                                                    </option>
+                                                    <option value="否" {$row.fee_reduction_request=='否' ? 'selected' : ''
+                                                        }>否
+                                                    </option>
+
+                                                </select>
+                                                <!-- <input class="form-control" name="fee_reduction_request" type="text"
+                                                    value="{$row.fee_reduction_request|htmlentities}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">预审备案</th>
+                                            <td>
+                                                <select class="form-control" name="pre_examination_record">
+                                                    <option value="是" {$row.pre_examination_record=='是' ? 'selected'
+                                                        : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.pre_examination_record=='否' ? 'selected'
+                                                        : '' }>否
+                                                    </option>
+
+                                                </select>
+                                                <!-- <input class="form-control" name="pre_examination_record" type="text"
+                                                    value="{$row.pre_examination_record|htmlentities}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">总委备案</th>
+                                            <td>
+                                                <select id="aa" class="form-control" name="general_committee_record">
+                                                    <option value="是" {$row.general_committee_record=='是' ? 'selected'
+                                                        : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.general_committee_record=='否' ? 'selected'
+                                                        : '' }>否
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr id="bb">
+                                            <th style="width:30%; text-align:right; vertical-align:middle">总委备案号</th>
+                                            <td>
+                                                <input  class="form-control" name="general_committee_number"
+                                                    type="text" value="{$row.general_committee_number|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">上传附件</th>
+                                            <td>
+
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <div class="input-group">
+                                                        <input id="c-attachment" data-rule="" class="form-control"
+                                                            size="50" name="attachment" type="text"
+                                                            value="{$row.attachment}">
+                                                        <div class="input-group-addon no-border no-padding">
+                                                            <span><button type="button" id="faupload-attachment"
+                                                                    class="btn btn-danger faupload"
+                                                                    data-input-id="c-attachment"
+                                                                    data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp"
+                                                                    data-multiple="false"
+                                                                    data-preview-id="p-attachment"><i
+                                                                        class="fa fa-upload"></i> 上传</button></span>
+                                                            <span><button type="button" id="fachoose-attachment"
+                                                                    class="btn btn-primary fachoose"
+                                                                    data-input-id="c-attachment" data-mimetype="image/*"
+                                                                    data-multiple="false"><i class="fa fa-list"></i>
+                                                                    选择</button></span>
+                                                        </div>
+                                                        <span class="msg-box n-right" for="c-attachment"></span>
+                                                    </div>
+                                                    <ul class="row list-inline faupload-preview" id="p-attachment"></ul>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="submit">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+        <script>
+
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var navTabs = document.querySelectorAll('.nav-tabs a');
+                var formContainer = document.getElementById("form-container");
+
+                for (var i = 0; i < navTabs.length; i++) {
+                    navTabs[i].addEventListener("click", function (event) {
+                        event.preventDefault(); // 阻止默认的链接行为
+                        var target = this.getAttribute("href"); // 获取目标链接的href属性值
+                        // 隐藏所有表单
+                        var forms = formContainer.getElementsByTagName("form");
+                        for (var j = 0; j < forms.length; j++) {
+                            forms[j].style.display = "none";
+                        }
+                        // 显示目标表单
+                        var targetForm = document.querySelector(target);
+                        targetForm.style.display = "block";
+                    });
+                }
+
+                var selectGeneralCommittee = document.getElementById("aa");
+  var generalCommitteeNumberRow = document.getElementById("bb");
+
+  // 获取初始的总委备案的值
+  var initialSelectedValue = selectGeneralCommittee.value;
+
+  // 根据初始值确定是否显示总委备案号
+  if (initialSelectedValue === "是") {
+    generalCommitteeNumberRow.style.display = "table-row";
+  } else {
+    generalCommitteeNumberRow.style.display = "none";
+  }
+
+  // 添加change事件监听器
+  selectGeneralCommittee.addEventListener("change", function () {
+    var selectedValue = selectGeneralCommittee.value;
+
+    if (selectedValue === "是") {
+      generalCommitteeNumberRow.style.display = "table-row";
+    } else {
+      generalCommitteeNumberRow.style.display = "none";
+    }
+  });
+
+  // 手动触发change事件
+  var event = new Event("change");
+  selectGeneralCommittee.dispatchEvent(event);
+
+//手机输入框
+var phoneInput = document.querySelector('.phone-input');  
+  
+        phoneInput.addEventListener('input', function() {  
+            var value = this.value.trim();  
+            if (value.length !== 11) {  
+                this.classList.add('invalid');  
+            } else {  
+                this.classList.remove('invalid');  
+            }  
+        });  
+
+
+
+        //证件号码输入框
+        var certificateType = document.getElementById('certificateType');  
+        var idNumberInput = document.getElementById('idNumber');  
+          
+        // 根据证件类型设置最大长度  
+        certificateType.addEventListener('change', function() {  
+            var maxLength = this.value === '身份证' ? 16 : 9;  
+            idNumberInput.setAttribute('maxlength', maxLength);  
+            // 清除可能存在的invalid类  
+            idNumberInput.classList.remove('invalid');  
+        });  
+  
+        // 检查证件号码长度并设置边框颜色  
+        idNumberInput.addEventListener('input', function() {  
+            var value = this.value.trim();  
+            var maxLength = certificateType.value === '身份证' ? 16 : 9;  
+            if (value.length !== maxLength) {  
+                this.classList.add('invalid');  
+            } else {  
+                this.classList.remove('invalid');  
+            }  
+        });  
+  
+        // 初始设置  
+        certificateType.dispatchEvent(new Event('change'));  
+
+            });
+
+        </script>

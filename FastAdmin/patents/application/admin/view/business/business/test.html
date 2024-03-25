@@ -1,0 +1,377 @@
+<div class="col-md-3">
+    <div class="box box-success">
+        <div class="panel-heading">
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{$row.personal_name}</h3>
+                <p class="text-muted text-center">{$row.id}</p>
+                <div class="tab-pane fade in">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:30%">名称</th>
+                                    <td>
+                                        {$row.personal_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">代号ID</th>
+                                    <td>
+                                        {$row.id}
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #edit-form {
+        display: none;
+    }
+
+    .active a {
+        background-color: rgb(100, 99, 99) !important;
+    }
+</style>
+<!-- 右侧详细信息 -->
+<div class="col-md-8 panel panel-default panel-intro ">
+    <!-- 无序列表导航 -->
+    <div class="box box-success">
+        <div class="panel-heading ">
+            <ul class="nav nav-tabs">
+                <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li>
+                <!-- <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li> -->
+            </ul>
+        </div>
+        <!-- 详细信息 -->
+        <div id="form-container">
+            <form id="view-form">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">个人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">名称</th>
+                                            <td>
+                                                {$row.personal_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">详细信息</th>
+                                            <td>
+                                                {$row.content}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">生日</th>
+                                            <td>
+                                                {$row.birthday}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">身份证</th>
+                                            <td>
+                                                {$row.birthday}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">性别</th>
+                                            <td>
+                                                {$row.sex}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">学历</th>
+                                            <td>
+                                                {$row.educational}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">创新创业服务领军人才
+                                            </th>
+                                            <td>
+                                                {$row.service_talents}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">投资家
+                                            </th>
+                                            <td>
+                                                {$row.investor}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">创业领军人才
+                                            </th>
+                                            <td>
+                                                {$row.entrepreneurial_talents}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">领军企业家
+                                            </th>
+                                            <td>
+                                                {$row.leading_entrepreneurs}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">外籍创新人才
+                                            </th>
+                                            <td>
+                                                {$row.foreign_talents}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">企业创新领军人才
+                                            </th>
+                                            <td>
+                                                {$row.talents}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">企业首席科学家
+                                            </th>
+                                            <td>
+                                                {$row.scientist}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- <form id="edit-form" action="{:url('business/business/savePersonalInfo', ['id' => $row.id])}" method="post" class="col-md-8">
+                
+            
+                <label for="personal_name">{:__('Personal_name')}:</label>
+                <input name="personal_name" type="text" value="{$row.personal_name|htmlentities}">
+            
+                <br>
+            
+                <label for="educational">{:__('学历')}:</label>
+                <select name="educational">
+                    <option value="高中" {$row.educational == '高中' ? 'selected' : ''}>高中</option>
+                    <option value="大专" {$row.educational == '大专' ? 'selected' : ''}>大专</option>
+                    <option value="本科" {$row.educational == '本科' ? 'selected' : ''}>本科</option>
+                    <option value="硕士" {$row.educational == '硕士' ? 'selected' : ''}>硕士</option>
+                </select>
+            
+                <br>
+            
+                <button type="submit">Save</button>
+            </form> -->
+            <form id="edit-form" role="form" action="{:url('business/business/savePersonalInfo', ['id' => $row.id])}" method="post">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">编辑个人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">名称</th>
+                                            <td>
+                                                <input class="form-control" name="personal_name" type="text"
+                                                    value="{$row.personal_name|htmlentities}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">详细信息</th>
+                                            <td>
+                                                <textarea class="form-control editor"
+                                                    name="content">{$row.content}</textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">生日</th>
+                                            <td>
+                                                <input id="c-birthday" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="birthday" type="text" value="{$row.birthday}">
+                                                <!-- <div class="form-group">
+                                                    <div class="col-xs-12 col-sm-8">
+                                                <input id="city-select" data-toggle="city-picker" class="form-control" name="birthday" type="text" value="{$row.birthday}">
+                                                <input id="c-birthday" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="birthday" type="text" value="{$row.birthday}">
+                                                <input name="birthday" type="text" value="{$row.birthday}">
+                                            </div>
+                                        </div> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">身份证</th>
+                                            <td>
+                                                <input class="form-control" name="idcards" type="text"
+                                                    value="{$row.idcards}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">性别</th>
+                                            <td>
+                                                <!-- <input class="form-control" name="sex" type="text" value="{$row.sex}"> -->
+                                                <select class="form-control" name="sex">
+                                                    <option value="男" {$row.sex=='男' ? 'selected' : '' }>男
+                                                    </option>
+                                                    <option value="女" {$row.sex=='女' ? 'selected' : '' }>女
+                                                    </option>
+                                                   
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">学历</th>
+                                            <td>
+                                                <select class="form-control" name="educational">
+                                                    <option value="高中" {$row.educational=='高中' ? 'selected' : '' }>高中
+                                                    </option>
+                                                    <option value="大专" {$row.educational=='大专' ? 'selected' : '' }>大专
+                                                    </option>
+                                                    <option value="本科" {$row.educational=='本科' ? 'selected' : '' }>本科
+                                                    </option>
+                                                    <option value="硕士" {$row.educational=='硕士' ? 'selected' : '' }>硕士
+                                                    </option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">创新创业服务领军人才
+                                            </th>
+                                            <td>
+                                                <select class="form-control" name="service_talents">
+                                                    <option value="是" {$row.service_talents=='是' ? 'selected' : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.service_talents=='否' ? 'selected' : '' }>否
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">投资家</th>
+                                            <td>
+                                                <select class="form-control" name="investor">
+                                                    <option value="是" {$row.investor=='是' ? 'selected' : '' }>是</option>
+                                                    <option value="否" {$row.investor=='否' ? 'selected' : '' }>否</option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">创业领军人才</th>
+                                            <td>
+                                                <select class="form-control" name="entrepreneurial_talents">
+                                                    <option value="是" {$row.entrepreneurial_talents=='是' ? 'selected'
+                                                        : '' }>是</option>
+                                                    <option value="否" {$row.entrepreneurial_talents=='否' ? 'selected'
+                                                        : '' }>否</option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">领军企业家</th>
+                                            <td>
+                                                <select class="form-control" name="leading_entrepreneurs">
+                                                    <option value="是" {$row.leading_entrepreneurs=='是' ? 'selected' : ''
+                                                        }>是</option>
+                                                    <option value="否" {$row.leading_entrepreneurs=='否' ? 'selected' : ''
+                                                        }>否</option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">外籍创新人才</th>
+                                            <td>
+                                                <select class="form-control" name="leading_entrepreneurs">
+                                                    <option value="是" {$row.leading_entrepreneurs=='是' ? 'selected' : ''
+                                                        }>是</option>
+                                                    <option value="否" {$row.leading_entrepreneurs=='否' ? 'selected' : ''
+                                                        }>否</option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">企业创新领军人才</th>
+                                            <td>
+                                                <select class="form-control" name="talents">
+                                                    <option value="是" {$row.talents=='是' ? 'selected' : '' }>是</option>
+                                                    <option value="否" {$row.talents=='否' ? 'selected' : '' }>否</option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">企业首席科学家</th>
+                                            <td>
+                                                <select class="form-control" name="scientist">
+                                                    <option value="是" {$row.scientist=='是' ? 'selected' : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.scientist=='否' ? 'selected' : '' }>否
+                                                    </option>
+
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="submit">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+        <script>
+
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var navTabs = document.querySelectorAll('.nav-tabs a');
+                var formContainer = document.getElementById("form-container");
+
+                for (var i = 0; i < navTabs.length; i++) {
+                    navTabs[i].addEventListener("click", function (event) {
+                        event.preventDefault(); // 阻止默认的链接行为
+                        var target = this.getAttribute("href"); // 获取目标链接的href属性值
+                        // 隐藏所有表单
+                        var forms = formContainer.getElementsByTagName("form");
+                        for (var j = 0; j < forms.length; j++) {
+                            forms[j].style.display = "none";
+                        }
+                        // 显示目标表单
+                        var targetForm = document.querySelector(target);
+                        targetForm.style.display = "block";
+                    });
+                }
+            });
+        </script>

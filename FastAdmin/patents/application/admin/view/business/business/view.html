@@ -1,0 +1,615 @@
+<div class="col-md-3">
+    <div class="box box-success">
+        <div class="panel-heading">
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{$row.business_name}</h3>
+                <p class="text-muted text-center">{$row.id}</p>
+                <div class="tab-pane fade in">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:30%">名称</th>
+                                    <td>
+                                        {$row.business_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">代号ID</th>
+                                    <td>
+                                        {$row.id}
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #edit-form {
+        display: none;
+    }
+
+    .active a {
+        background-color: rgb(100, 99, 99) !important;
+    }
+</style>
+<!-- 右侧详细信息 -->
+<div class="col-md-8 panel panel-default panel-intro ">
+    <!-- 无序列表导航 -->
+    <div class="box box-success">
+        <div class="panel-heading ">
+            <ul class="nav nav-tabs">
+                <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li>
+                
+            </ul>
+        </div>
+        <!-- 详细信息 -->
+        <div id="form-container">
+            <form id="view-form">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">个人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">名称</th>
+                                            <td>
+                                                {$row.business_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">中文简称</th>
+                                            <td>
+                                                {$row.chinese_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">英文简称</th>
+                                            <td>
+                                                {$row.english_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">商标</th>
+                                            <td>
+                                                {$row.row_brand}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">签约</th>
+                                            <td>
+                                                {$row.signed}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">行业</th>
+                                            <td>
+                                                {$row.industry_model_id}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">电话号码
+                                            </th>
+                                            <td>
+                                                {$row.phone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">手机号码
+                                            </th>
+                                            <td>
+                                                {$row.telephone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">注册日期
+                                            </th>
+                                            <td>
+                                                {$row.registerdate}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">注册地区
+                                            </th>
+                                            <td>
+                                                {$row.registeraddress}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">注册资金
+                                            </th>
+                                            <td>
+                                                {$row.registerfund}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">统一信用代码
+                                            </th>
+                                            <td>
+                                                {$row.credit_code}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">企业性质
+                                            </th>
+                                            <td>
+                                                {$row.company_type}
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <th style="width:30%;text-align:right">办公面积
+                                            </th>
+                                            <td>
+                                                {$row.acreage}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">未授权外观专利
+                                            </th>
+                                            <td>
+                                                {$row.unauthorized_appearance_patent}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已授权外观专利
+                                            </th>
+                                            <td>
+                                                {$row.appearance_patent_granted}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已受理发明专利
+                                            </th>
+                                            <td>
+                                                {$row.accept_invent_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">未授权发明专利
+                                            </th>
+                                            <td>
+                                                {$row.unauthorized_invention_patent}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已授权发明专利
+                                            </th>
+                                            <td>
+                                                {$row.authorize_patent_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已受理实用新型专利
+                                            </th>
+                                            <td>
+                                                {$row.accept_new_patent_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已授权实用新型专利
+                                            </th>
+                                            <td>
+                                                {$row.authorize_new_patent_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">未授权实用新型专利
+                                            </th>
+                                            <td>
+                                                {$row.not_authorize_patent_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已登记软件著作权
+                                            </th>
+                                            <td>
+                                                {$row.register_bookmaking_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">已申请软件著作权
+                                            </th>
+                                            <td>
+                                                {$row.apply_bookmaking_count}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">知识产权贯标
+                                            </th>
+                                            <td>
+                                                {$row.aptitude_state}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">简介
+                                            </th>
+                                            <td>
+                                                {$row.summary}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">营业执照副本
+                                            </th>
+                                            <td>
+                                                {$row.business_licence}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">员工数
+                                            </th>
+                                            <td>
+                                                {$row.scale}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">高新企业
+                                            </th>
+                                            <td>
+                                                {$row.hightech}
+                                            </td>
+                                        </tr>
+                                        
+
+                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+         
+            <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator"    action="{:url('business/business/saveCompanyInfo', ['id' => $row.id])}" method="post">
+               
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">编辑企业实体信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">名称</th>
+                                            <td>
+                                                <input class="form-control" name="business_name" type="text" value="{$row.business_name|htmlentities}" readonly>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">中文简称</th>
+                                            <td>
+                                                <input class="form-control" name="chinese_name" type="text" value="{$row.chinese_name}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">英文简称</th>
+                                            <td>
+                                                <input class="form-control" name="english_name" type="text"
+                                                    value="{$row.english_name}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">商标</th>
+                                            <td>
+                                                
+                                                <!-- <div>
+                                                   <div style="float: left;">  <input  id="c-row_brand" class="form-control" size="50" name="row.row_brand" type="text" value="{$row.row_brand}"></div>
+                                                    <div style="float: left;" class="input-group-addon no-border no-padding">
+                                                        <span><button type="button" id="faupload-row_brand" class="btn btn-danger faupload" data-input-id="c-row_brand" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-row_brand"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                                        <span><button type="button" id="fachoose-row_brand" class="btn btn-primary fachoose" data-input-id="c-row_brand" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                                                    </div>
+                                                    <span class="msg-box n-right" for="c-row_brand"></span>
+                                                </div> 
+                                                <ul class="row list-inline faupload-preview" id="p-row_brand"></ul> -->
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <div class="input-group">
+                                                        <input id="c-row_brand" class="form-control" size="50" name="row_brand"
+                                                            type="text" value="{$row.row_brand|htmlentities}">
+                                                        <div class="input-group-addon no-border no-padding">
+                                                            <span><button type="button" id="faupload-row_brand" class="btn btn-danger faupload"
+                                                                    data-input-id="c-row_brand"
+                                                                    data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                                                                    data-multiple="false" data-preview-id="p-row_brand"><i
+                                                                        class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                                            <span><button type="button" id="fachoose-row_brand" class="btn btn-primary fachoose"
+                                                                    data-input-id="c-row_brand" data-mimetype="image/*" data-multiple="false"><i
+                                                                        class="fa fa-list"></i> {:__('Choose')}</button></span>
+                                                        </div>
+                                                        <span class="msg-box n-right" for="c-row_brand"></span>
+                                                    </div>
+                                                    <ul class="row list-inline faupload-preview" id="p-row_brand"></ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">签约</th>
+                                            <td>
+                                                <select class="form-control" name="signed">
+                                                    <option value="是" {$row.signed=='是' ? 'selected' : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.signed=='否' ? 'selected' : '' }>否
+                                                    </option>
+
+                                                </select>
+                                            </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">行业</th>
+                                            <td>
+                                                <select class="form-control" name="industry_model_id">
+                                                    <option value="教育" {$row.industry_model_id=='教育' ? 'selected' : '' }>教育
+                                                    </option>
+                                                    <option value="国际组织" {$row.industry_model_id=='国际组织' ? 'selected' : '' }>国际组织
+                                                    </option>
+                                                    <option value="房地产业" {$row.industry_model_id=='房地产业' ? 'selected' : '' }>房地产业
+                                                    </option>
+                                                    <option value="金融业" {$row.industry_model_id=='金融业' ? 'selected' : '' }>金融业
+                                                    </option>
+                                                    <option value="保险业" {$row.industry_model_id=='保险业' ? 'selected' : '' }>保险业
+                                                    </option>
+                                                    <option value="信息技术服务业" {$row.industry_model_id=='信息技术服务业' ? 'selected' : '' }>信息技术服务业
+                                                    </option>
+                                                </select>
+                                                <!-- <input class="form-control" name="industry_model_id" type="text" value="{$row.industry_model_id}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">电话号码</th>
+                                            <td>
+                                                <input class="form-control" name="phone" type="text" value="{$row.phone}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">手机号码</th>
+                                            <td>
+                                                <input class="form-control" name="telephone" type="text" value="{$row.telephone}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">注册日期</th>
+                                            <td>
+                                                <input id="c-registerdate" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="registerdate" type="text" value="{$row.registerdate}">
+                                                <!-- <input class="form-control" name="registerdate" type="text" value="{$row.registerdate}"> -->
+                                            </td>
+                                        </tr>
+                                     
+                                        <!-- <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">注册地区</th>
+                                            <td>
+                                             
+                                                <input  class="form-control" name="registeraddress" type="text" value="{$row.registeraddress}">   
+                                            </td>
+                                           
+                                        </tr> -->
+                                        <tr>
+                                        <th style="width:30%;text-align:right; vertical-align:middle">注册地区</th>
+                                         <td>
+                                        <div class="form-group">
+                                          <!-- <label class="control-label col-xs-12 col-sm-2">{:__('Branch_name')}:</label> -->
+                                            <div class="col-xs-12 col-sm-8">
+                                            <input id="city-select" data-toggle="city-picker" class="form-control" name="registeraddress" type="text" value="{$row.registeraddress}">
+                                           </div>
+                                          </div>
+                                      </td>
+                                        </tr>
+                            
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">注册资金</th>
+                                            <td>
+                                                <input class="form-control" name="registerfund" type="text" value="{$row.registerfund}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">统一信用代码</th>
+                                            <td>
+                                                <input class="form-control" name="credit_code" type="text" value="{$row.credit_code}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">企业性质</th>
+                                            <td>
+                                                <select class="form-control" name="company_type">
+                                                    <option value="有限责任公司" {$row.company_type=='有限责任公司' ? 'selected' : '' }>有限责任公司
+                                                    </option>
+                                                    <option value="股份有限公司" {$row.company_type=='股份有限公司' ? 'selected' : '' }>股份有限公司
+                                                    </option>
+                                                </select>
+                                                <!-- <input class="form-control" name="company_type" type="text" value="{$row.company_type}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">办公面积</th>
+                                            <td>
+                                                <input class="form-control" name="acreage" type="text" value="{$row.acreage}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">未授权外观专利</th>
+                                            <td>
+                                                <input class="form-control" name="unauthorized_appearance_patent" type="text" value="{$row.unauthorized_appearance_patent}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已授权外观专利</th>
+                                            <td>
+                                                <input class="form-control" name="appearance_patent_granted" type="text" value="{$row.appearance_patent_granted}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已受理发明专利</th>
+                                            <td>
+                                                <input class="form-control" name="accept_invent_count" type="text" value="{$row.accept_invent_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">未授权发明专利</th>
+                                            <td>
+                                                <input class="form-control" name="unauthorized_invention_patent" type="text" value="{$row.unauthorized_invention_patent}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已授权发明专利</th>
+                                            <td>
+                                                <input class="form-control" name="authorize_patent_count" type="text" value="{$row.authorize_patent_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已受理实用新型专利</th>
+                                            <td>
+                                                <input class="form-control" name="accept_new_patent_count" type="text" value="{$row.accept_new_patent_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已授权实用新型专利</th>
+                                            <td>
+                                                <input class="form-control" name="authorize_new_patent_count" type="text" value="{$row.authorize_new_patent_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">未授权实用新型专利</th>
+                                            <td>
+                                                <input class="form-control" name="not_authorize_patent_count" type="text" value="{$row.not_authorize_patent_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已登记软件著作权</th>
+                                            <td>
+                                                <input class="form-control" name="register_bookmaking_count" type="text" value="{$row.register_bookmaking_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">已申请软件著作权</th>
+                                            <td>
+                                                <input class="form-control" name="apply_bookmaking_count" type="text" value="{$row.apply_bookmaking_count}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">知识产权贯标</th>
+                                            <td>
+                                                <!-- <input class="form-control" name="aptitude_state" type="text" value="{$row.aptitude_state}"> -->
+                                                <select class="form-control" name="aptitude_state">
+                                                    <option value="已获得" {$row.aptitude_state=='已获得' ? 'selected' : '' }>已获得
+                                                    </option>
+                                                    <option value="审核中" {$row.aptitude_state=='审核中' ? 'selected' : '' }>审核中
+                                                    </option>
+                                                    <option value="未获得" {$row.aptitude_state=='未获得' ? 'selected' : '' }>未获得
+                                                    </option>
+                                                </select>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">简介</th>
+                                            <td>
+                                                <input class="form-control" name="summary" type="text" value="{$row.summary}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">营业执照副本</th>
+                                            <td>
+                                                <div class="col-xs-12 col-sm-8">
+                                                    <div class="input-group">
+                                                        <input id="c-business_licence" class="form-control" size="50" name="business_licence"
+                                                            type="text" value="{$row.business_licence|htmlentities}">
+                                                        <div class="input-group-addon no-border no-padding">
+                                                            <span><button type="button" id="faupload-business_licence" class="btn btn-danger faupload"
+                                                                    data-input-id="c-business_licence"
+                                                                    data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                                                                    data-multiple="false" data-preview-id="p-business_licence"><i
+                                                                        class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                                            <span><button type="button" id="fachoose-business_licence" class="btn btn-primary fachoose"
+                                                                    data-input-id="c-business_licence" data-mimetype="image/*" data-multiple="false"><i
+                                                                        class="fa fa-list"></i> {:__('Choose')}</button></span>
+                                                        </div>
+                                                        <span class="msg-box n-right" for="c-business_licence"></span>
+                                                    </div>
+                                                    <ul class="row list-inline faupload-preview" id="p-business_licence"></ul>
+                                                </div>
+                                                <!-- <input class="form-control" name="business_licence" type="text" value="{$row.business_licence}"> -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">员工数</th>
+                                            <td>
+                                                <input class="form-control" name="scale" type="text" value="{$row.scale}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">高新企业</th>
+                                            <td>
+                                                <input class="form-control" name="hightech" type="text" value="{$row.hightech}">
+                                            </td>
+                                        </tr>
+                                      
+                                    </tbody>
+                                    
+                                </table>
+                                <button type="submit">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+        <script>
+// document.addEventListener("DOMContentLoaded", function () {
+//             var citySelect = document.querySelector('[data-toggle="city-picker"]');
+//             citySelect.addEventListener("change", function (event) {
+//                 var selectedCity = event.target.value;
+//                 // 处理选择的城市逻辑
+//                 // 进行相应的操作，如保存选择的城市到数据库等
+//             });
+//         });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                var navTabs = document.querySelectorAll('.nav-tabs a');
+                var formContainer = document.getElementById("form-container");
+
+                for (var i = 0; i < navTabs.length; i++) {
+                    navTabs[i].addEventListener("click", function (event) {
+                        event.preventDefault(); // 阻止默认的链接行为
+                        var target = this.getAttribute("href"); // 获取目标链接的href属性值
+                        // 隐藏所有表单
+                        var forms = formContainer.getElementsByTagName("form");
+                        for (var j = 0; j < forms.length; j++) {
+                            forms[j].style.display = "none";
+                        }
+                        // 显示目标表单
+                        var targetForm = document.querySelector(target);
+                        targetForm.style.display = "block";
+                    });
+                }
+            });
+        </script>
+
+
+
+
+
+
+

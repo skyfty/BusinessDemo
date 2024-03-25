@@ -1,0 +1,292 @@
+<!-- 左侧基本信息 -->
+<div class="col-md-3">
+    <div class="box box-success">
+        <div class="panel-heading">
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{$row.branch_name}</h3>
+                <p class="text-muted text-center">{$row.idcode}</p>
+                <div class="tab-pane fade in">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:30%">名称</th>
+                                    <td>
+                                        {$row.branch_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">电话</th>
+                                    <td>
+                                        {$row.telephone}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #edit-form {
+        display: none;
+    }
+</style>
+<!-- 右侧详细信息 -->
+<div class="col-md-8 panel panel-default panel-intro ">
+    <!-- 无序列表导航 -->
+    <div class="box box-success">
+        <div class="panel-heading ">
+            <ul class="nav nav-tabs">
+                <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li>
+            </ul>
+        </div>
+        <!-- 详细信息 -->
+        <div id="form-container">
+            <form id="view-form">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">{$row.branch_name}</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%">名称</th>
+                                            <td>
+                                                {$row.branch_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">代号</th>
+                                            <td>
+                                                {$row.idcode}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">电话</th>
+                                            <td>
+                                                {$row.telephone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">企业介绍</th>
+                                            <td>
+                                                {$row.content}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">创建时间</th>
+                                            <td>
+                                                {$row.createtime}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">固话</th>
+                                            <td>
+                                                {$row.dianhua}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">地址</th>
+                                            <td>
+                                                {$row.address}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%">详细地址</th>
+                                            <td>
+                                                {$row.area}
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <!-- 修改信息 -->
+            <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                <div style="height: 20px;"></div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('Branch_name')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-branch_name" class="form-control" name="row[branch_name]" type="text"
+                            value="{$row.branch_name|htmlentities}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('Content')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <textarea id="c-content" data-rule="required" class="form-control editor" rows="5"
+                            name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('Telephone')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-telephone" class="form-control" name="row[telephone]" type="text"
+                            value="{$row.telephone|htmlentities}">
+                    </div>
+                </div>
+
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Idcode')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input id="c-idcode" class="form-control" name="row[idcode]" type="text"
+                            value="{$row.idcode|htmlentities}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Branch_image')}:</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="input-group">
+                            <input id="c-branch_image" class="form-control" size="50" name="row[branch_image]"
+                                type="text" value="{$row.branch_image|htmlentities}">
+                            <div class="input-group-addon no-border no-padding">
+                                <span><button type="button" id="faupload-branch_image" class="btn btn-danger faupload"
+                                        data-input-id="c-branch_image"
+                                        data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp"
+                                        data-multiple="false" data-preview-id="p-branch_image"><i
+                                            class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                <span><button type="button" id="fachoose-branch_image" class="btn btn-primary fachoose"
+                                        data-input-id="c-branch_image" data-mimetype="image/*" data-multiple="false"><i
+                                            class="fa fa-list"></i> {:__('Choose')}</button></span>
+                            </div>
+                            <span class="msg-box n-right" for="c-branch_image"></span>
+                        </div>
+                        <ul class="row list-inline faupload-preview" id="p-branch_image"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('创建时间')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-createtime" class="form-control" name="row[createtime]" type="text"
+                            value="{$row.createtime|htmlentities}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('固话')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-dianhua" class="form-control" name="row[dianhua]" type="text"
+                            value="{$row.dianhua|htmlentities}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('地址')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-address" class="form-control" name="row[address]" type="text"
+                            value="{$row.address|htmlentities}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-3 col-sm-2">{:__('详细地址')}:</label>
+                    <div class="col-xs-5 col-sm-8">
+                        <input id="c-area" class="form-control" name="row[area]" type="text"
+                            value="{$row.area|htmlentities}">
+                    </div>
+                </div>
+                <div style="height: 20px;"></div>
+                <div>
+                    <label class="control-label col-xs-12 col-sm-2"></label>
+                    <div class="col-xs-12 col-sm-8">
+                        <button type="submit" id="submit-btn">确定</button>
+                    </div>
+                </div>
+
+                <div style="height: 70px;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("submit-btn").addEventListener("click", function (event) {
+        event.preventDefault(); // 阻止表单默认提交行为  
+
+        // 获取表单输入值  
+        var content = document.getElementById("c-content").value;
+        var branchName = document.getElementById("c-branch_name").value;
+        var telephone = document.getElementById("c-telephone").value;
+        var idcode = document.getElementById("c-idcode").value;
+        var branchImage = document.getElementById("c-branch_image").value;
+        var dianhua = document.getElementById("c-dianhua").value;
+        var address = document.getElementById("c-address").value;
+        var area = document.getElementById("c-area").value;
+
+        // 构建请求体  
+        var formData = new FormData();
+        formData.append("content", content);
+        formData.append("branch_name", branchName);
+        formData.append("telephone", telephone);
+        formData.append("idcode", idcode);
+        formData.append("branch_image", branchImage);
+        formData.append("dianhua", dianhua);
+        formData.append("address", address);
+        formData.append("area", area);
+        var url = "http://localhost:130/api/branch/branchEdit.php";
+        // 发送 POST 请求  
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                // 检查响应是否成功  
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // 解析 JSON  
+            })
+            .then(data => {
+                // 根据返回的 JSON 中的 success 参数进行判断  
+                if (data.success === "更新成功") {
+                    // 如果更新成功，刷新当前网页  
+                    location.reload();
+                } else {
+                    // 如果更新失败，显示弹窗  
+                    alert("修改失败: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+                // 如果发生错误，显示弹窗  
+                alert("发生错误，修改失败。");
+            });
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var navTabs = document.querySelectorAll('.nav-tabs a');
+        var formContainer = document.getElementById("form-container");
+
+        for (var i = 0; i < navTabs.length; i++) {
+            navTabs[i].addEventListener("click", function (event) {
+                event.preventDefault(); // 阻止默认的链接行为
+                var target = this.getAttribute("href"); // 获取目标链接的href属性值
+                // 隐藏所有表单
+                var forms = formContainer.getElementsByTagName("form");
+                for (var j = 0; j < forms.length; j++) {
+                    forms[j].style.display = "none";
+                }
+                // 显示目标表单
+                var targetForm = document.querySelector(target);
+                targetForm.style.display = "block";
+            });
+        }
+    });
+</script>

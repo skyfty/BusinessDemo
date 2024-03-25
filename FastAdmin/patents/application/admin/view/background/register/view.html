@@ -1,0 +1,394 @@
+<div class="col-md-3">
+    <div class="box box-success">
+        <div class="panel-heading">
+            基本信息
+        </div>
+        <div class="panel-body">
+            <div class="box-body box-profile">
+                <h3 class="text-center">{$row.register_name}</h3>
+                <p class="text-muted text-center">{$row.case_type}</p>
+                <div class="tab-pane fade in">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th style="width:30%">名称</th>
+                                    <td>
+                                        {$row.register_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">代号ID</th>
+                                    <td>
+                                        {$row.case_type}
+                                    </td>
+                                </tr>
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #edit-form {
+        display: none;
+    }
+
+    .active a {
+        background-color: rgb(100, 99, 99) !important;
+    }
+</style>
+<!-- 右侧详细信息 -->
+<div class="col-md-8 panel panel-default panel-intro ">
+    <!-- 无序列表导航 -->
+    <div class="box box-success">
+        <div class="panel-heading ">
+            <ul class="nav nav-tabs">
+                <li><a href="#view-form" data-toggle="tab" style="color: black; background-color: darkgrey;">详细信息</a>
+                </li>
+                <li><a href="#edit-form" data-toggle="tab" style="color: black; background-color: darkgrey;">修改</a></li>
+                
+            </ul>
+        </div>
+        <!-- 详细信息 -->
+        <div id="form-container">
+            <form id="view-form">
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">个人信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">交底书名称</th>
+                                            <td>
+                                                {$row.register_name}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">案件类型</th>
+                                            <td>
+                                                {$row.case_type}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">立案日期</th>
+                                            <td>
+                                                {$row.case_time}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">我方案号</th>
+                                            <td>
+                                                {$row.my_case_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">对方案号</th>
+                                            <td>
+                                                {$row.other_case_number}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">是否加快</th>
+                                            <td>
+                                                {$row.fast}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">代理机构</th>
+                                            <td >
+                                                {$row.organization}                                             
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">代理人</th>
+                                            <td>
+                                                {$row.agent}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">代理人联系方式</th>
+                                            <td>
+                                                {$row.agent_phone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">技术联系人</th>
+                                            <td>
+                                                {$row.technology}
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <th style="width:30%;text-align:right">技术联系方式</th>
+                                            <td>
+                                                {$row.technology_phone}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right">发明专利是否公开</th>
+                                            <td>
+                                                {$row.invent_open}
+                                            </td>
+                                        </tr>
+                                   
+                                        
+
+                                        
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+         
+            <form id="edit-form" class="form-horizontal" role="form" data-toggle="validator"    action="{:url('background/register/saveRegisterInfo', ['id' => $row.id])}" method="post">
+               
+                <div class="panel-body">
+                    <div class="box-body box-profile">
+                        <h3 class="text-center">编辑企业实体信息</h3>
+                        <div class="tab-pane fade in">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <th style="width:30%; text-align:right; vertical-align:middle">交底书名称</th>
+                                            <td>
+                                                <input class="form-control" name="register_name" type="text" value="{$row.register_name|htmlentities}" readonly>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">案子类型</th>
+                                            <td>
+                                                <input class="form-control" name="case_type" type="text" value="{$row.case_type}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">立案日期</th>
+                                            <td>
+                                                <input class="form-control" name="case_time" type="text"
+                                                    value="{$row.case_time}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">我方案号</th>
+                                            <td>
+                                                <input class="form-control" name="my_case_number" type="text"
+                                                    value="{$row.my_case_number}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">对方案号</th>
+                                            <td>
+                                                <input class="form-control" name="other_case_number" type="text"
+                                                    value="{$row.other_case_number}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">是否加快</th>
+                                            <td>
+                                                <select class="form-control" name="fast"  >
+                                                    <option value="是" {$row.fast=='是' ? 'selected' : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.fast=='否' ? 'selected' : '' }>否
+                                                    </option>
+
+                                                </select>
+                                          
+                                            </td>
+                                        </tr>
+                                       
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">代理机构</th>
+                                            <td>
+                                               
+                                                <select class="form-control "  id="organization-select" name="organization" >
+                                                    <select class="form-control" id="organization-select" name="organization">
+                                                    </select>
+                                                    <!-- {foreach $branchNames as $branchName}
+                                                <option value="{$row.organization}" {$row.organization == $branchName ? 'selected' : ''}>{$branchName}</option>
+                                                     {/foreach} -->
+                                                </select>
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">代理人</th>
+                                            <td>
+                                                
+                                                <select class="form-control" name="agent" id="agent-select">
+                                                    <option value="{$row.agent}">{$row.agent}</option>
+                                                   
+                                                </select>
+                                                
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">代理人联系方式</th>
+                                            <td>
+                                                <input class="form-control" name="agent_phone" type="text"
+                                                    value="{$row.agent_phone}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">技术联系人</th>
+                                            <td>
+                                                <input class="form-control" name="technology" type="text"
+                                                    value="{$row.technology}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">技术联系方式</th>
+                                            <td>
+                                                <input class="form-control" name="technology_phone" type="text"
+                                                    value="{$row.technology_phone}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="width:30%;text-align:right; vertical-align:middle">发明专利是否公开</th>
+                                            <td>
+                                                <select class="form-control" name="invent_open">
+                                                    <option value="是" {$row.invent_open=='是' ? 'selected' : '' }>是
+                                                    </option>
+                                                    <option value="否" {$row.invent_open=='否' ? 'selected' : '' }>否
+                                                    </option>
+
+                                                </select>
+                                                <!-- <input class="form-control" name="invent_open" type="text"
+                                                    value="{$row.invent_open}"> -->
+                                            </td>
+                                        </tr>
+                                  
+                                      
+                                      
+                                      
+                                    </tbody>
+                                    
+                                </table>
+                                <button type="submit">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+        </div>
+
+        <script>
+           
+
+
+document.addEventListener("DOMContentLoaded", function () {
+                var navTabs = document.querySelectorAll('.nav-tabs a');
+                var formContainer = document.getElementById("form-container");
+
+                for (var i = 0; i < navTabs.length; i++) {
+                    navTabs[i].addEventListener("click", function (event) {
+                        event.preventDefault(); // 阻止默认的链接行为
+                        var target = this.getAttribute("href"); // 获取目标链接的href属性值
+                        // 隐藏所有表单
+                        var forms = formContainer.getElementsByTagName("form");
+                        for (var j = 0; j < forms.length; j++) {
+                            forms[j].style.display = "none";
+                        }
+                        // 显示目标表单
+                        var targetForm = document.querySelector(target);
+                        targetForm.style.display = "block";
+                    });
+                }
+
+
+
+
+
+
+            });
+
+           
+
+            var branchNames = JSON.parse('<?php echo json_encode($branchNames); ?>');
+
+// 获取代理机构下拉列表元素
+var organizationSelect = document.getElementById("organization-select");
+
+// 动态生成选项
+branchNames.forEach(function(branchName) {
+    var option = document.createElement("option");
+    option.value = branchName;
+    option.textContent = branchName;
+    organizationSelect.appendChild(option);
+});
+
+// 设置默认选中值
+var branchNamess = JSON.parse('<?php echo json_encode($row); ?>');
+var defaultOrganization =branchNamess['organization'];
+organizationSelect.value = defaultOrganization;
+
+
+var agentSelects = document.getElementById("agent-select");
+
+    
+    agentSelects.innerHTML = "";
+    var defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = branchNamess['agent'];
+    agentSelects.appendChild(defaultOption);
+
+
+
+
+
+            document.getElementById("organization-select").addEventListener("change", function() {
+             
+              
+    var selectedOrganization =this.value;
+   
+    var agentSelect = document.getElementById("agent-select");
+
+    
+    agentSelect.innerHTML = "";
+   
+    var filteredAgents = JSON.parse('<?php echo json_encode($hier); ?>');
+
+    filteredAgents = filteredAgents.filter(function(row) {
+        return row.organization === selectedOrganization;
+    });
+
+  
+    filteredAgents.forEach(function(row) {
+        var option = document.createElement("option");
+        option.value = row.agent_name;
+        option.textContent = row.agent_name;
+
+        
+
+        agentSelect.appendChild(option);
+    });
+});
+
+            
+        </script>
+
+
+
+
+
+
+

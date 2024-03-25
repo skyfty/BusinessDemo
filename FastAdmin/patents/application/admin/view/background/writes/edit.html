@@ -1,0 +1,90 @@
+
+
+
+
+
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {if $showContentField}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('返稿意见')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50">{$row.content|htmlentities}</textarea>
+        </div>
+    </div>
+    {/if}
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Write_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-write_name" class="form-control" name="row[write_name]" type="text" value="{$row.write_name|htmlentities}">
+        </div>
+    </div> -->
+{if $upFile} 
+    <div class="form-group">
+        <label for="c-words" class="control-label col-xs-12 col-sm-2">文档:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-words" data-rule="" class="form-control" size="50" name="row[words]" type="text" value="{$row.words}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-avatar" class="btn btn-danger faupload" data-input-id="c-words" data-mimetype="docx," data-multiple="false" data-preview-id="p-avatar"><i class="fa fa-upload"></i> 上传</button></span>
+                    <span><button type="button" id="fachoose-avatar" class="btn btn-primary fachoose" data-input-id="c-words" data-mimetype="docx" data-multiple="false"><i class="fa fa-list"></i> 选择</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-words"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-avatar"></ul>
+        </div>
+    </div>
+{/if}
+{if $showContentField}
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">{:__('当前状态')}:</label>
+    <div class="col-xs-12 col-sm-8">
+
+   
+
+
+        <select class="form-control" name="row[now_status]">
+               
+            <option value="返稿" {$row.now_status=='待客户第一次返稿'||$row.now_status=='待客户第二次返稿'||$row.now_status=='待客户第三次返稿'||$row.now_status=='待客户第四次返稿'||$row.now_status=='待客户第五次返稿' ? 'selected' : '' }>返稿
+            </option>
+            <option value="放弃" {$row.now_status=='放弃' ? 'selected' : '' }>放弃
+            </option>
+            <option value="结稿" {$row.now_status=='结稿' ? 'selected' : '' }>结稿
+            </option>
+            
+            <!-- <option value="第一次撰写中" {$row.now_status=='第一次撰写中' ? 'selected' : '' }>第一次撰写中
+            </option>
+            <option value="待客户第一次返稿" {$row.now_status=='待客户第一次返稿' ? 'selected' : '' }>待客户第一次返稿
+            </option>
+            <option value="第二次撰写中" {$row.now_status=='第二次撰写中' ? 'selected' : '' }>第二次撰写中
+            </option>
+            <option value="待客户第二次返稿" {$row.now_status=='待客户第二次返稿' ? 'selected' : '' }>待客户第二次返稿
+            </option>
+            <option value="第三次撰写中" {$row.now_status=='第三次撰写中' ? 'selected' : '' }>第三次撰写中
+            </option>
+            <option value="待客户第三次返稿" {$row.now_status=='待客户第三次返稿' ? 'selected' : '' }>待客户第三次返稿
+            </option>
+            <option value="第四次撰写中" {$row.now_status=='第四次撰写中' ? 'selected' : '' }>第四次撰写中
+            </option>
+            <option value="待客户第四次返稿" {$row.now_status=='待客户第四次返稿' ? 'selected' : '' }>待客户第四次返稿
+            </option>
+            <option value="第五次撰写中" {$row.now_status=='第五次撰写中' ? 'selected' : '' }>第五次撰写中
+            </option>
+            <option value="待客户第五次返稿" {$row.now_status=='待客户第五次返稿' ? 'selected' : '' }>待客户第五次返稿
+            </option>
+            <option value="第六次撰写中" {$row.now_status=='第六次撰写中' ? 'selected' : '' }>第六次撰写中
+            </option>
+            <option value="完成" {$row.now_status=='完成' ? 'selected' : '' }>完成
+            </option> -->
+            
+        </select>
+        <!-- <input id="c-now_status" class="form-control" name="row[now_status]" type="text" value="{$row.now_status|htmlentities}"> -->
+    </div> 
+</div>
+{/if}
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

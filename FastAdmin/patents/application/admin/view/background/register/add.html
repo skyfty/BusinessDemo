@@ -1,0 +1,155 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" data-rule="required" class="form-control editor" rows="5" name="row[content]" cols="50"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Register_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-register_name" class="form-control" name="row[register_name]" type="text" value="">
+        </div>
+    </div> 
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">客户名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="cclient_name" class="form-control  selectpage" data-field="business_name" data-source="business/business/index" name="row[client_name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Technology')} :</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" id="cctechnology" name="row[technology]">
+                
+            </select>
+            <!-- <input id="c-technology" class="form-control" name="row[technology]" type="text" value=""> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">版权类型:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" name="row[copyright_type]">
+                <option value="I" >发明
+                </option>
+                <option value="U" >实用新型
+                </option>
+                <option value="D" >外观设计
+                </option>
+                <option value="R" >商标
+                </option>
+                <option value="C" >软著
+                </option>
+                
+
+            </select>
+           
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Case_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-case_type" class="form-control" name="row[case_type]" type="text" value="">
+        </div>
+    </div> 
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Case_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-case_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[case_time]" type="text" value="{:date('Y-m-d ')}">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('My_case_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-my_case_number" class="form-control" name="row[my_case_number]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Other_case_number')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-other_case_number" class="form-control" name="row[other_case_number]" type="text" value="">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fast')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" name="row[fast]">
+                <option value="是" >是
+                </option>
+                <option value="否" >否
+                </option>
+
+            </select>
+           
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Organization')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="corganization" class="form-control  selectpage" data-field="branch_name" data-source="branch/branch/index" name="row[organization]" type="text" value="">
+               <!-- <input id="corganization" class="form-control  selectpage" data-field="name" data-source="auth/group/index" name="row[organization]" type="text" value=""> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('部门')}:</label>
+        <div class="col-xs-12 col-sm-8">
+           
+            <select class="form-control" id="cagent" name="row[department]">
+               
+ 
+            </select>
+            <!-- <input id="cagent" class="form-control selectpage" data-field="agent_name" data-source="branch/agent/index" name="row[agent]" type="text" value=""> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent')}:</label>
+        <div class="col-xs-12 col-sm-8">
+           
+            <select class="form-control" id="cdagent" name="row[agent]">
+               
+ 
+            </select>
+            <!-- <input id="cagent" class="form-control selectpage" data-field="agent_name" data-source="branch/agent/index" name="row[agent]" type="text" value=""> -->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" id="agentphone" name="row[agent_phone]">
+               
+ 
+            </select>
+            <!-- <input id="c-agent_phone" class="form-control" name="row[agent_phone]" type="text" value=""> -->
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Technology_phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-technology_phone" class="form-control" name="row[technology_phone]" type="text" val ue="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Invent_open')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" name="row[invent_open]">
+                <option value="是" >是
+                </option>
+                <option value="否" >否
+                </option>
+ 
+            </select>
+            
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div> 
+</form>
+
